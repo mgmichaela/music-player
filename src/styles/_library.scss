@@ -30,6 +30,9 @@
 	background-color: hsl(344, 37%, 57%);
 	box-shadow: 2px 2px 50px rgb(165, 165, 165);
 	overflow: scroll;
+	transform: translateX(-100%);
+	transition: all 0.5s ease;
+	opacity: 0;
 	h1 {
 		padding: 1rem;
 	}
@@ -44,7 +47,7 @@
   width: 40%;
   }
 	&:hover {
-		background: hsl(344, 28%, 43%)
+		background: hsl(344, 28%, 43%);
 	}
 }
 
@@ -60,4 +63,9 @@
 		font-family: 'Lora', serif;
 		text-transform: lowercase;
 	}
+}
+
+.active-library {
+	transform: translateX(0%);
+	opacity: 1;
 }

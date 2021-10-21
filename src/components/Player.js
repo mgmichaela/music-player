@@ -1,9 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { playAudio } from '../util';
+import '../styles/player.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause, faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
-const Player = ({ isPlaying, setIsPlaying, audioRef, songSpan, setSongSpan, songs, currentSong, setCurrentSong }) => {
+const Player = ({
+  isPlaying,
+  setIsPlaying,
+  audioRef,
+  songSpan,
+  setSongSpan,
+  songs,
+  setSongs,
+  currentSong,
+  setCurrentSong
+}) => {
+  useEffect(() => {
+    const currentSelectedSong = songs.map((song) => {
+      if (song.id === currentSong.id) {
+        return {
+          ...song,
+          active: true,
+        }
+      } else {
+        return {
+          ...song,
+          active: false,
+        }
+      }
+    });
+    setSongs(currentSelectedSong);
+  }, [currentSong]);
+
   const playHandler = () => {
     if (isPlaying) {
       audioRef.current.pause();
@@ -35,6 +64,7 @@ const Player = ({ isPlaying, setIsPlaying, audioRef, songSpan, setSongSpan, song
     if (direction == 'skip-forward') {
       setCurrentSong(songs[(currentIndex + 1) % songs.length]);
     }
+    playAudio(isPlaying, audioRef)
   };
 
   return (

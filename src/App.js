@@ -35,8 +35,9 @@ const App = () => {
         currentSong={currentSong}
         setCurrentSong={setCurrentSong}
         songSpan={songSpan}
-        songs={songs}
         setSongSpan={setSongSpan}
+        songs={songs}
+        setSongs={setSongs}
       />
       <Library
         audioRef={audioRef}

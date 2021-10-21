@@ -26,9 +26,9 @@ const Player = ({ isPlaying, setIsPlaying, audioRef, songSpan, setSongSpan, song
   const skipHandler = (direction) => {
     let currentIndex = songs.findIndex((song) => song.id == currentSong.id);
     if (direction == 'skip-back') {
-      setCurrentSong(songs[currentIndex - 1])
+      setCurrentSong(songs([currentIndex - 1]) % songs.length)
     } if (direction == 'skip-forward') {
-      setCurrentSong(songs[currentIndex + 1])
+      setCurrentSong(songs([currentIndex + 1]) % songs.length)
     }
   };
 

@@ -5,14 +5,14 @@ nav {
   align-items: center;
   button {
     background: transparent;
-    border: 2px solid hsl(344, 37%, 57%);
+    border: 2px solid hsl(340, 4%, 27%);
     border-radius: 2;
     cursor: pointer;
     padding: 0.5rem;
     transition: all 0.3s ease;
     &:hover {
-      background: hsl(344, 37%, 57%);
+      background: hsl(340, 4%, 27%);
       color: #fff;
     }
   }
-}
+} 

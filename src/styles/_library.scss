@@ -1,6 +1,6 @@
 * {
 	scrollbar-width: thin;
-	scrollbar-color: rgb(61, 57, 57) transparent;
+	scrollbar-color: hsl(347, 15%, 76%) transparent;
 }
 
 *::-webkit-scrollbar {
@@ -12,13 +12,13 @@
 }
 
 *::-webkit-scrollbar-thumb {
-	background-color: rgb(61, 57, 57);
+	background-color: hsl(340, 4%, 27%);
 	border-radius: 20px;
 	border: transparent;	
 }
 
 .selected {
-	background: hsl(344, 28%, 43%);
+	background: hsl(344, 9%, 68%);
 }
 
 .library-container {
@@ -27,7 +27,7 @@
   left: 0;
   width: 20rem;
   height: 100%;
-	background-color: hsl(344, 37%, 57%);
+	background-color: hsl(345, 20%, 88%); 
 	box-shadow: 2px 2px 50px rgb(165, 165, 165);
 	overflow: scroll;
 	transform: translateX(-100%);
@@ -47,7 +47,7 @@
   width: 40%;
   }
 	&:hover {
-		background: hsl(344, 28%, 43%);
+		background: hsl(347, 15%, 76%);
 	}
 }
 

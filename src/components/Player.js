@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { playAudio } from '../util';
 import '../styles/player.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -52,19 +51,24 @@ const Player = ({
     setSongSpan({ ...songSpan, currentTime: e.target.value });
   };
 
-  const skipHandler = (direction) => {
-    let currentIndex = songs.findIndex((song) => song.id == currentSong.id);
-    if (direction == 'skip-back') {
-      if ((currentIndex - 1) % songs.length == -1) {
-        setCurrentSong(songs[songs.length - 1]);
+  const skipHandler = async (direction) => {
+    let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+    if (direction === 'skip-forward') {
+      await setCurrentSong(songs[(currentIndex + 1) % songs.length]);
+    }
+    if (direction === 'skip-back') {
+      if ((currentIndex - 1) % songs.length === - 1) {
+        await setCurrentSong(songs[songs.length - 1]);
+        if (isPlaying) {
+          audioRef.current.play();
+        }
         return;
       }
-      setCurrentSong(songs[(currentIndex - 1) % songs.length]);
+      await setCurrentSong(songs[(currentIndex - 1) % songs.length]);
     }
-    if (direction == 'skip-forward') {
-      setCurrentSong(songs[(currentIndex + 1) % songs.length]);
+    if (isPlaying) {
+      audioRef.current.play();
     }
-    playAudio(isPlaying, audioRef)
   };
 
   return (
@@ -78,7 +82,7 @@ const Player = ({
           onChange={dragHandler}
           type='range'
         />
-        <p>{getTime(songSpan.duration)}</p>
+        <p>{songSpan.duration ? getTime(songSpan.duration) : '0:00'}</p>
       </div>
       <div className='play-control'>
         <FontAwesomeIcon

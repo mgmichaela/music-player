@@ -15,12 +15,22 @@ const App = () => {
     currentTime: 0,
     duration: 0,
   });
+
   const [libraryStatus, setLibraryStatus] = useState(false);
   const timeUpdateHandler = (e) => {
     const current = e.target.currentTime;
     const duration = e.target.duration;
     setSongSpan({ ...songSpan, currentTime: current, duration });
   };
+
+  const songEndHandler = async () => {
+    let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+    await setCurrentSong(songs[(currentIndex + 1) % songs.length]);
+    if (isPlaying) {
+      audioRef.current.play();
+    }
+  }
+
   return (
     <div>
       <Nav 
@@ -52,6 +62,7 @@ const App = () => {
         onLoadedMetadata={timeUpdateHandler}
         ref={audioRef}
         src={currentSong.audio}
+        onEnded={songEndHandler}
       />
     </div>
   )

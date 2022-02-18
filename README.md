@@ -1,7 +1,7 @@
 # 🎵 Music Player
 
 This project was created for learning purposes only.
-Built with React, JavaScript, SCSS and CSS.
+Built with React, JavaScript and SCSS.
 
 ## Project Status
 

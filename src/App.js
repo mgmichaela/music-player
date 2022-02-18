@@ -11,16 +11,20 @@ const App = () => {
   const [songs, setSongs] = useState(PlayList());
   const [currentSong, setCurrentSong] = useState(songs[0]);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [libraryStatus, setLibraryStatus] = useState(false);
   const [songSpan, setSongSpan] = useState({
     currentTime: 0,
     duration: 0,
   });
 
-  const [libraryStatus, setLibraryStatus] = useState(false);
   const timeUpdateHandler = (e) => {
     const current = e.target.currentTime;
     const duration = e.target.duration;
-    setSongSpan({ ...songSpan, currentTime: current, duration });
+    setSongSpan({
+      ...songSpan,
+      currentTime: current,
+      duration
+    });
   };
 
   const songEndHandler = async () => {
@@ -29,13 +33,13 @@ const App = () => {
     if (isPlaying) {
       audioRef.current.play();
     }
-  }
+  };
 
   return (
     <div>
-      <Nav 
-      libraryStatus={libraryStatus}
-      setLibraryStatus={setLibraryStatus}
+      <Nav
+        libraryStatus={libraryStatus}
+        setLibraryStatus={setLibraryStatus}
       />
       <Song currentSong={currentSong} />
       <Player

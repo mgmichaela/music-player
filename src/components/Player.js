@@ -76,6 +76,7 @@ const Player = ({
       <div className='time-control'>
         <p>{getTime(songSpan.currentTime)}</p>
         <input
+        className='player-input-range'
           min={0}
           max={songSpan.duration || 0}
           value={songSpan.currentTime}

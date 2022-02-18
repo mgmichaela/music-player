@@ -5,7 +5,9 @@ Built with React, JavaScript, SCSS and CSS.
 
 ## Project Status
 
-Done. ✅
+- Desktops and larger screens: _Done._ ✅
+
+- Phones and smaller screens: _Currently under development._ 🔧⚙
 
 ## Installation and Setup Instructions
 
